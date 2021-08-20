@@ -1,0 +1,63 @@
+{
+  "name": "@nassim99/react-native-gauge",
+  "version": "0.0.3",
+  "description": "an svg gauge package that works on react native cli and expo",
+  "main": "./build/dist/index.js",
+  "repository": "https://github.com/nassim99/react-native-gauge",
+  "author": "Redwan Nassim <redoin10@gmail.com> (https://github.com/nassim99)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nassim99/react-native-gauge/issues"
+  },
+  "homepage": "https://github.com/nassim99/react-native-gauge#readme",
+  "keywords": [
+    "FreakyCoder",
+    "freakycoder",
+    "kuray",
+    "Kuray",
+    "react",
+    "react-native",
+    "javascript",
+    "ui-lib",
+    "rn"
+  ],
+  "scripts": {
+    "build": "cd lib && tsc && cp ../package.json ../build/dist/ && Echo Build completed!",
+    "build-windows": "cd lib & tsc & copy ./package.json ./build/dist/ & Echo Build completed!",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "react-native-svg": "^12.1.1"
+  },
+  "peerDependencies": {
+    "react": ">= 16.x.x",
+    "react-native": ">=0.63.x",
+    "react-native-svg": "^12.1.1"
+  },
+  "devDependencies": {
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/react": "^16.9.53",
+    "@types/react-native": "^0.63.25",
+    "eslint": "^7.11.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "husky": "^4.3.0",
+    "lint-staged": "^10.4.2",
+    "prettier": "^2.1.2",
+    "react-native-typescript-transformer": "^1.2.13",
+    "typescript": "^4.0.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "./src/*.{js,jsx,ts,tsx}": [
+      "npx prettier --write",
+      "eslint src/*.js --fix-dry-run"
+    ]
+  }
+}
