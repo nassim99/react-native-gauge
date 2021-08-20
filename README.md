@@ -1,4 +1,4 @@
-<img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/>
+<!-- <img alt="React Native Typescript Library Starter" src="assets/logo.png" width="1050"/>
 
 [![Battle Tested ✅](https://img.shields.io/badge/-Battle--Tested%20%E2%9C%85-03666e?style=for-the-badge)](https://github.com/WrathChaos/react-native-typescript-library-starter)
 
@@ -114,4 +114,4 @@ FreakyCoder, kurayogun@gmail.com
 
 ## License
 
-React Native Typescript Library Starter is available under the MIT license. See the LICENSE file for more info.
+React Native Typescript Library Starter is available under the MIT license. See the LICENSE file for more info. -->
