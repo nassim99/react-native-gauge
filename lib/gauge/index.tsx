@@ -1,6 +1,6 @@
-import * as React from 'react';
-import Svg, { Path, Text } from 'react-native-svg';
-import { validateValue } from './utils/helpers';
+import * as React from "react";
+import Svg, { Path, Text } from "react-native-svg";
+import { validateValue } from "./utils/helpers";
 
 interface GaugeSVGProps {
   value: number;
@@ -10,15 +10,17 @@ interface GaugeSVGProps {
   gaugeValueStroke?: number;
   insideComponent?: React.ReactNode;
   insideTextColor?: string;
+  size: number;
 }
 const GaugeSVG: React.FC<GaugeSVGProps> = ({
   value,
-  gaugeColor = '#ff0',
-  gaugeValueColor = '#666',
+  gaugeColor = "#ff0",
+  gaugeValueColor = "#666",
   gaugeStroke = 2,
   gaugeValueStroke = 2.5,
   insideComponent,
-  insideTextColor = '#999',
+  insideTextColor = "#999",
+  size = 150,
 }) => {
   const validatedValue = validateValue(value, 0, 100);
   const opts = {
@@ -51,20 +53,42 @@ const GaugeSVG: React.FC<GaugeSVGProps> = ({
     const angle = getAngle(360 - Math.abs(136 - 45)),
       flag = angle <= 180 ? 0 : 1;
 
-    return pathString(opts.dialRadius, opts.dialStartAngle, angle + opts.dialStartAngle, flag);
+    return pathString(
+      opts.dialRadius,
+      opts.dialStartAngle,
+      angle + opts.dialStartAngle,
+      flag,
+    );
   }
 
-  function pathString(radius: any, startAngle: any, endAngle: any, largeArc: any) {
+  function pathString(
+    radius: any,
+    startAngle: any,
+    endAngle: any,
+    largeArc: any,
+  ) {
     var coords = getDialCoords(radius, startAngle, endAngle),
       start = coords.start,
       end = coords.end,
-      largeArcFlag = typeof largeArc === 'undefined' ? 1 : largeArc;
+      largeArcFlag = typeof largeArc === "undefined" ? 1 : largeArc;
 
-    return ['M', start.x, start.y, 'A', radius, radius, 0, largeArcFlag, 1, end.x, end.y].join(' ');
+    return [
+      "M",
+      start.x,
+      start.y,
+      "A",
+      radius,
+      radius,
+      0,
+      largeArcFlag,
+      1,
+      end.x,
+      end.y,
+    ].join(" ");
   }
 
   return (
-    <Svg height={150} width={150} viewBox="0 0 100 100">
+    <Svg height={size} width={size} viewBox="0 0 100 100">
       <Path
         fill="none"
         stroke={gaugeColor}
