@@ -8,9 +8,9 @@ interface GaugeSVGProps {
   gaugeValueColor?: string;
   gaugeStroke?: number;
   gaugeValueStroke?: number;
-  insideComponent?: React.ReactNode;
   insideTextColor?: string;
-  size: number;
+  size?: number;
+  children?: React.ReactNode;
 }
 const GaugeSVG: React.FC<GaugeSVGProps> = ({
   value,
@@ -18,7 +18,7 @@ const GaugeSVG: React.FC<GaugeSVGProps> = ({
   gaugeValueColor = "#666",
   gaugeStroke = 2,
   gaugeValueStroke = 2.5,
-  insideComponent,
+  children,
   insideTextColor = "#999",
   size = 150,
 }) => {
@@ -90,6 +90,7 @@ const GaugeSVG: React.FC<GaugeSVGProps> = ({
   return (
     <Svg height={size} width={size} viewBox="0 0 100 100">
       <Path
+        strokeDasharray="50,0,20,0"
         fill="none"
         stroke={gaugeColor}
         strokeWidth={gaugeStroke}
@@ -97,11 +98,11 @@ const GaugeSVG: React.FC<GaugeSVGProps> = ({
         strokeLinecap="round"
       />
 
-      {!!insideComponent ? (
-        insideComponent
+      {!!children ? (
+        children
       ) : (
         <Text x={50} y={50} fill={insideTextColor} textAnchor="middle">
-          {validatedValue.toFixed(2)}
+          {validatedValue}
         </Text>
       )}
       <Path
